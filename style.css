@@ -98,7 +98,7 @@ body{
   text-align: center;
   vertical-align: middle;
   line-height: 30px;
-  margin-bottom: 5rem;
+  margin-bottom: 7.5rem;
   border-radius: 3px;
     
 }
@@ -113,4 +113,9 @@ body{
   outline:none;
   cursor: pointer;
 
+}
+
+#on{
+  border-radius: 50%;
+  margin-top: 1rem;
 }
