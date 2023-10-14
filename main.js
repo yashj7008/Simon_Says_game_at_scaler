@@ -7,7 +7,7 @@ let computerTurn;
 let inervalid;
 let on = false;
 let win;
-
+let highestScore  = 0;
 const turnCounter = document.querySelector("#turn");
 const green = document.querySelector("#green");
 const red = document.querySelector("#red");
@@ -15,6 +15,10 @@ const yellow = document.querySelector("#yellow");
 const blue = document.querySelector("#blue");
 const startButton = document.querySelector("#start");
 const onButton = document.querySelector("#on");
+const gameOverMessage = document.querySelector("#gameOverMessage");
+const maxScore = document.querySelector("#maxScore");
+
+
 
 onButton.addEventListener('click', (event) => {
   if (onButton.checked == true) {
@@ -36,6 +40,8 @@ startButton.addEventListener('click',(e) =>{
 });
 
 function play(){
+   // gameOver.style.display = 'none';
+   
     win = false;
     order = [];
     playerOrder = [];
@@ -170,7 +176,7 @@ function gameturn(){
   
   function check(){
      // Condition when player win
-    if(playerOrder.length == 5 && Playergood ){
+    if(playerOrder.length == 20 && Playergood ){
       winGame();
     }
     // Condtion when player failed
@@ -182,9 +188,17 @@ function gameturn(){
       flashColor();
       turnCounter.innerHTML = "No !";
       setTimeout(() => {
-        turnCounter.innerHTML = count;
-        clearColor();
+      turnCounter.innerHTML = count;
+      clearColor();
+      gameOverMessage.style.display = "block"; // Show the game over message
+      gameOverMessage.innerHTML = `Game Over Your Score is ${count}`;
+      if (count > highestScore) {
+        highestScore = count;
+        maxScore.innerHTML = `Highest Score: ${highestScore}`;
+      }
+      restartGame();
       }, 800 );
+
     }
       // Codition when player still playing 
       if(Playergood && playerOrder.length == count && !win){
@@ -195,6 +209,9 @@ function gameturn(){
         turnCounter.innerHTML = count;
         inervalid = setInterval(gameturn, 800);
       }
+
+    
+
 }
 
 function winGame() {
@@ -202,4 +219,22 @@ function winGame() {
   turnCounter.innerHTML = "WIN!";
   on = false;
   win = true;
+  gameOverMessage.style.display = "block"; // Show the game over message
+  gameOverMessage.innerHTML = "Congratulations, You Win!";
+
+  if (count > highestScore) {
+    highestScore = count;
+    maxScore.innerHTML = `Highest Score: ${highestScore}`;
+  }
+
+  restartGame();
 }
+
+
+function restartGame() {
+  setTimeout(() => {
+    gameOverMessage.style.display = "none"; 
+   //  play();  
+  }, 3000); 
+}
+

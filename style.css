@@ -11,9 +11,14 @@ body{
 
 .gameBody{
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+  
+    
     
 }
+
 
 .game{
     display: flex;
@@ -23,7 +28,7 @@ body{
     height: 450px;
     border-radius: 50%;
     background-color: black;
-    margin-top: 5rem;
+    margin-top: 2rem;
     box-shadow: inset 0px 0px 12px 6px rgba(58, 45, 45, 0.85), 3px 4px 13px 1px rgba(14, 14, 14, 0.7);
 }
 
@@ -118,4 +123,18 @@ body{
 #on{
   border-radius: 50%;
   margin-top: 1rem;
+}
+
+#gameOverMessage{
+  color: white;
+  font-size: 25px;
+  display: none;
+}
+
+#maxScore{
+  position: absolute;
+  color: white;
+  font-size: 25px;
+  top: 25px;
+  right: 150px;
 }
