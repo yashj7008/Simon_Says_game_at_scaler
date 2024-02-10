@@ -15,8 +15,6 @@ body{
     justify-content: center;
     align-items: center;
   
-    
-    
 }
 
 
@@ -42,7 +40,6 @@ body{
     grid-template-columns: 2fr 2fr;
     background-color: black;
     gap: 1rem;
-   
     
 }
 

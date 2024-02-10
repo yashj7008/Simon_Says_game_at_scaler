@@ -58,10 +58,10 @@ function play(){
     inervalid = setInterval(gameturn , 800 );
 }
 
-function gameturn(){
+function gameturn(){    // This function is only for computer default work
     on = false;
 
-    if(flash == count){
+    if(flash == count){      
         clearInterval(inervalid);
         computerTurn = false;
         clearColor();
@@ -84,7 +84,7 @@ function gameturn(){
         four();
        } 
        flash++;
-    }, 200);
+    }, 300);
   }
 }
 
