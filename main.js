@@ -18,12 +18,23 @@ const onButton = document.querySelector("#on");
 const gameOverMessage = document.querySelector("#gameOverMessage");
 const maxScore = document.querySelector("#maxScore");
 
+const onClick_sound = new Audio();
+onClick_sound.src = "./onClick_sound.wav"
 
+const gameOver_Sound = new Audio();
+gameOver_Sound.src = "./gameOver.wav"
+
+const gameStart_sound = new Audio();
+gameStart_sound.src = "./gameStart.mp3"
+
+const winGame_sound = new Audio();
+winGame_sound.src = "./winGame.wav"
 
 onButton.addEventListener('click', (event) => {
   if (onButton.checked == true) {
     on = true;
     turnCounter.innerHTML = "-";
+    gameStart_sound.play();
   } else {
     on = false;
     turnCounter.innerHTML = "";
@@ -35,6 +46,7 @@ onButton.addEventListener('click', (event) => {
 startButton.addEventListener('click',(e) =>{
   if (on || win) {
     play();
+    gameStart_sound.play();
   }
    
 });
@@ -72,15 +84,19 @@ function gameturn(){    // This function is only for computer default work
        clearColor();
        setTimeout(() => {
        if (order[flash] == 1){
+        onClick_sound.play();
         one();
        } 
        if (order[flash] == 2) {
+        onClick_sound.play();
         two();
        }
        if (order[flash] == 3) {
+        onClick_sound.play();
         three();
        }
        if (order[flash] == 4){
+        onClick_sound.play();
         four();
        } 
        flash++;
@@ -93,22 +109,22 @@ function gameturn(){    // This function is only for computer default work
   }
 
   function two() {
-    red.style.backgroundColor = "yellow";
+    red.style.backgroundColor = "#db7b7b";
   }
 
   function three() {
-    blue.style.backgroundColor = "lightblue";
+    blue.style.backgroundColor = "#6c6ccf";
   }
 
   function four() {
-     yellow.style.backgroundColor = "white";
+     yellow.style.backgroundColor = "#e8d196";
   }
 
   function flashColor() {
     green.style.backgroundColor = "lightgreen";
-    red.style.backgroundColor = "tomato";
-    blue.style.backgroundColor = "lightskyblue";
-    yellow.style.backgroundColor = "yellow";
+    red.style.backgroundColor = "#db7b7b";
+    blue.style.backgroundColor = "#6c6ccf";
+    yellow.style.backgroundColor = "#e8d196";
   }
 
   function clearColor() {
@@ -119,6 +135,7 @@ function gameturn(){    // This function is only for computer default work
   }
 
   green.addEventListener('click', (event) => {
+    onClick_sound.play();
     if(on == true){
       playerOrder.push(1);
       check();
@@ -134,6 +151,7 @@ function gameturn(){    // This function is only for computer default work
   })
 
   red.addEventListener('click', (event) => {
+    onClick_sound.play();
     if(on == true){
     playerOrder.push(2);
     check();
@@ -148,6 +166,7 @@ function gameturn(){    // This function is only for computer default work
   })
 
   blue.addEventListener('click', (event) => {
+    onClick_sound.play();
     if(on == true){
     playerOrder.push(3);
     check();
@@ -161,6 +180,7 @@ function gameturn(){    // This function is only for computer default work
   })
 
   yellow.addEventListener('click', (event) => {
+    onClick_sound.play();
     if(on == true){
     playerOrder.push(4);
     check();
@@ -176,7 +196,7 @@ function gameturn(){    // This function is only for computer default work
   
   function check(){
      // Condition when player win
-    if(playerOrder.length == 20 && Playergood ){
+    if(playerOrder.length == 3 && Playergood ){
       winGame();
     }
     // Condtion when player failed
@@ -186,6 +206,7 @@ function gameturn(){    // This function is only for computer default work
 
     if(Playergood == false){
       flashColor();
+      gameOver_Sound.play();
       turnCounter.innerHTML = "No !";
       setTimeout(() => {
       turnCounter.innerHTML = count;
@@ -216,6 +237,7 @@ function gameturn(){    // This function is only for computer default work
 
 function winGame() {
   flashColor();
+  winGame_sound.play();
   turnCounter.innerHTML = "WIN!";
   on = false;
   win = true;

@@ -59,12 +59,12 @@ body{
 #green
 {
   background-color: darkgreen;
-  box-shadow: inset 0px 0px 12px 6px rgba(116, 223, 121, 0.85), 3px 4px 13px 1px rgba(114, 223, 104, 0.5);
+  box-shadow: inset 0px 0px 12px 6px rgba(138, 247, 143, 0.85), 3px 4px 13px 1px rgba(114, 223, 104, 0.5);
 }
 #yellow
 {
   background-color: goldenrod;
-  box-shadow: inset 0px 0px 12px 6px rgba(231, 125, 39, 0.85), 3px 4px 13px 1px rgba(204, 221, 107, 0.5);
+  box-shadow: inset 0px 0px 12px 6px rgba(236, 198, 167, 0.85), 3px 4px 13px 1px rgba(204, 221, 107, 0.5);
 }
 #blue
 {
@@ -92,7 +92,7 @@ body{
 #turn {
   position: absolute;
   background: rgb(95, 53, 53);
-  color: red;
+  color: rgb(0, 0, 0);
   font-family: courier;
   font-size: 20px;
   height: 30px;
@@ -133,5 +133,46 @@ body{
   color: white;
   font-size: 25px;
   top: 25px;
-  right: 150px;
+  right: 100px;
+}
+
+@media (max-width: 600px) {
+  .game{
+    width: 320px; /* Smaller size for mobile */
+    height: 320px; /* Smaller size for mobile */
+}
+   .grid_circle {
+    width: 300px; /* Smaller size for mobile */
+    height: 300px; /* Smaller size for mobile */
+}
+
+.cell {
+    width: 150px; /* Adjust cell size accordingly */
+    height: 150px; /* Adjust cell size accordingly */
+}
+
+.innerCircle {
+    width: 150px; /* Optionally adjust inner circle size */
+    height: 150px; /* Optionally adjust inner circle size */
+}
+
+#maxScore {
+    right: 50vw; /* Adjustments for other elements if needed */
+}
+
+  #letsPlay {
+    visibility: hidden;
+  }
+  #maxScore{
+    position: absolute;
+    color: white;
+    font-size: 25px;
+    top: 25px;
+    right: 50vw;
+  }
+  #turn{
+    height: 20px;
+    width: 25px;
+  }
+
 }
